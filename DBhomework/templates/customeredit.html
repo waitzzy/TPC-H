@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑顾客</title>
+</head>
+<body>
+ <form action="/DBHW/customeradd/" method="post">{% csrf_token %}
+       顾客编号:<input type="text" name="c_custkey" value="{{ obj.c_custkey  }}"/>
+       顾客名称：<input type="text" name="c_name" value="{{ obj.c_name }}"/>
+       顾客地址：<input type="text" name="c_address" value="{{ obj.c_address }}"/>
+       所属国家：<input type="text" name="c_nationkey" value="{{ obj.c_nationkey }}"/>
+       联系电话：<input type="text" name="c_phone" value="{{ obj.c_phone }}"/>
+       可用余额：<input type="text" name="c_acctbal" value="{{ obj.c_acctbal }}"/>
+       市场：<input type="text" name="c_mktsegment" value="{{ obj.c_mktsegment }}"/>
+       备注：<input type="text" name="c_comment" value="{{  obj.c_comment }}"/>
+
+        <input type="submit" value="编辑">
+        </form>
+        </form>
+</body>
+</html>

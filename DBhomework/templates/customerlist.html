@@ -98,6 +98,8 @@
                 </tr>
               </thead>
               <tbody>
+                  <a href="{% url 'DBHW:customeradd' %}" >
+                  <button class="btn btn-success">增加</button></a>
               {% for item in customer_list %}
                 <tr>
                   <td>{{ item.c_custkey }}</td>
@@ -108,6 +110,13 @@
                   <td>{{ item.c_acctbal }}</td>
                   <td>{{ item.c_mktsegment }}</td>
                   <td>{{ item.c_comment }}</td>
+                  <a href="{% url 'DBHW:customeredit' item.c_custkey  %}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:customerdelete' item.c_custkey  %}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:customerview' item.c_custkey%}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
                 </tr>
               {% endfor %}
 
