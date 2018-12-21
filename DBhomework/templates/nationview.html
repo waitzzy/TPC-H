@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览国家</title>
+</head>
+<body>
+
+        <td>{{ obj.n_nationkey }}</td>
+        <td>{{ obj.n_name }}</td>
+        <td>{{ obj.n_regionkey }}</td>
+        <td>{{ obj.n_comment }}
+        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+</body>
+</html>
