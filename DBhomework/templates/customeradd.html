@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <tle>增加顾客</tle>
+</head>
+<body>
+ <form action="/DBHW/customeradd/" method="post">{% csrf_token %}
+       顾客编号:<input type="text" name="c_custkey" value="{{ item.c_custkey  }}"/>
+       顾客名称：<input type="text" name="c_name" value="{{ item.c_name }}"/>
+       顾客地址：<input type="text" name="c_address" value="{{ item.c_address }}"/>
+       所属国家：<input type="text" name="c_nationkey" value="{{ item.c_nationkey }}"/>
+       联系电话：<input type="text" name="c_phone" value="{{ item.c_phone }}"/>
+       可用余额：<input type="text" name="c_acctbal" value="{{ item.c_acctbal }}"/>
+       市场：<input type="text" name="c_mktsegment" value="{{ item.c_mktsegment }}"/>
+       备注：<input type="text" name="c_comment" value="{{  item.c_comment }}"/>
+
+        <input type="submit" value="增加">
+        </form>
+        </form>
+</body>
+</html>
