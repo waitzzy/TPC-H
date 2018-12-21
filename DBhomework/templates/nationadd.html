@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加国家</title>
+</head>
+<body>
+
+        <form action="/DBHW/nationadd/" method="post">{% csrf_token %}
+        国家编码:<input type="text" name="n_nationkey" />
+        国家名称：<input type="text" name="n_name" />
+        所属地区：<select name="n_regionkey">
+        <option value="1">亚洲</option>
+        <option value="2">美洲</option>
+        <option value="3" selected="selected">非洲</option>
+        </select>
+        备注：<input type="text" name="n_comment" />
+        <input type="submit" value="增加">
+        </form>
+</body>
+</html>

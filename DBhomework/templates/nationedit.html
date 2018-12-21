@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑国家</title>
+</head>
+<body>
+
+        <form action="/DBHW/nationedit-{{ obj.n_nationkey }}/" method="post">{% csrf_token %}
+        国家编码:<input type="text" name="n_nationkey" value="{{ obj.n_nationkey }}"/>
+        国家名称：<input type="text" name="n_name" value="{{ obj.n_name }}"/>
+        所属地区：<select name="n_regionkey">
+                <option value="1">亚洲</option>
+                <option value="2">美洲</option>
+                <option value="3" selected="selected">非洲</option>
+                </select>
+：<input type="text" name="n_comment" value="{{ obj.n_comment }}"/>
+        <input type="submit" value="编辑">
+        </form>
+</body>
+</html>
