@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览顾客</title>
+</head>
+<body>
+
+          <td>{{ obj.c_custkey }}</td>
+          <td>{{ obj.c_name }}</td>
+          <td>{{ obj.c_address }}</td>
+          <td>{{ obj.c_nationkey }}</td>
+          <td>{{ obj.c_phone}}</td>
+          <td>{{ obj.c_acctbal }}</td>
+          <td>{{ obj.c_mktsegment }}</td>
+          <td>{{ obj.c_comment }}</td>
+        <a href="{% url 'DBHW:customerlist'%}"><button class="btn btn-success">返回</button></a>
+</body>
+</html>
