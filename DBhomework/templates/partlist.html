@@ -47,10 +47,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#">增加</a></li>
+            <li><a href="#">删除</a></li>
+            <li><a href="#">编辑</a></li>
+            <li><a href="#">查看</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -82,32 +82,44 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">顾客</h1>
+          <h1 class="page-header">零件</h1>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>顾客编号</th>
-                  <th>顾客名称</th>
-                  <th>顾客地址</th>
-                  <th>所属国家</th>
-                  <th>联系电话</th>
-                  <th>可用余额</th>
-                  <th>市场</th>
-                  <th>备注</th>
+                  <th>零件编号</th>
+                  <th>零件名称</th>
+                  <th>零件市场</th>
+                  <th>品牌</th>
+                    <th>型号 </th>
+                    <th>尺寸</th>
+                    <th>包装容器</th>
+                    <th>零售价</th>
+                    <th>备注</th>
                 </tr>
               </thead>
               <tbody>
-              {% for item in customer_list %}
+              {% for item in part_list %}
                 <tr>
-                  <td>{{ item.c_custkey }}</td>
-                  <td>{{ item.c_name }}</td>
-                  <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
-                  <td>{{ item.c_phone}}</td>
-                  <td>{{ item.c_acctbal }}</td>
-                  <td>{{ item.c_mktsegment }}</td>
-                  <td>{{ item.c_comment }}</td>
+                  <td>{{ item.p_partkey }}</td>
+                  <td>{{ item.p_name }}</td>
+                  <td>{{ item.p_mfgr }}</td>
+                    <td>{{ item.p_brand }}</td>
+                    <td>{{ item.p_type }}</td>
+                    <td>{{ item.p_size }}</td>
+                    <td>{{ item.p_container }}</td>
+                    <td>{{ item.p_retailprice }}</td>
+                    <td>{{ item.p_comment }}</td>
+                    <td>
+                  <a href="{% url 'DBHW:nationedit' item.p_partkey  %}" id="{{ item.p_partkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:nationdelete' item.p_partkey  %}" id="{{ item.p_partkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:nationadd' %}" id="{{ item.p_partkey }}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:nationview' item.p_partkey%}" id="{{ item.p_partkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
                 </tr>
               {% endfor %}
 

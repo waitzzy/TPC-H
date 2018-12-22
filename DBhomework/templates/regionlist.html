@@ -47,10 +47,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#">增加</a></li>
+            <li><a href="#">删除</a></li>
+            <li><a href="#">编辑</a></li>
+            <li><a href="#">查看</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -82,32 +82,36 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">顾客</h1>
+          <h1 class="page-header">地区</h1>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>顾客编号</th>
-                  <th>顾客名称</th>
-                  <th>顾客地址</th>
-                  <th>所属国家</th>
-                  <th>联系电话</th>
-                  <th>可用余额</th>
-                  <th>市场</th>
+                  <th>地区编号</th>
+                  <th>地区名称</th>
                   <th>备注</th>
+                  <th>供应价格</th>
+                    <th>备注</th>
                 </tr>
               </thead>
               <tbody>
-              {% for item in customer_list %}
+              {% for item in region_list %}
                 <tr>
-                  <td>{{ item.c_custkey }}</td>
-                  <td>{{ item.c_name }}</td>
-                  <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
-                  <td>{{ item.c_phone}}</td>
-                  <td>{{ item.c_acctbal }}</td>
-                  <td>{{ item.c_mktsegment }}</td>
-                  <td>{{ item.c_comment }}</td>
+                  <td>{{ item.r_regionkey }}</td>
+                  <td>{{ item.r_name }}</td>
+                  <td>{{ item.r_comment }}</td>
+                    <td>{{ item.ps_supplycost }}</td>
+                    <td>{{ item.ps_comment }}</td>
+                    <td>
+                  <a href="{% url 'DBHW:regionedit' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:regiondelete' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:regionadd' %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:regionview' item.r_regionkey%}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
                 </tr>
               {% endfor %}
 

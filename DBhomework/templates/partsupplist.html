@@ -82,33 +82,40 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">顾客</h1>
+          <h1 class="page-header">零件供应</h1>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>顾客编号</th>
-                  <th>顾客名称</th>
-                  <th>顾客地址</th>
-                  <th>所属国家</th>
-                  <th>联系电话</th>
-                  <th>可用余额</th>
-                  <th>市场</th>
+                  <th>零件编号</th>
+                  <th>供应商编号</th>
+                  <th>供应数量</th>
+                  <th>供应价格</th>
                   <th>备注</th>
                 </tr>
               </thead>
               <tbody>
-              {% for item in customer_list %}
+              {% for item in partsupp_list %}
                 <tr>
-                  <td>{{ item.c_custkey }}</td>
-                  <td>{{ item.c_name }}</td>
-                  <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
-                  <td>{{ item.c_phone}}</td>
-                  <td>{{ item.c_acctbal }}</td>
-                  <td>{{ item.c_mktsegment }}</td>
-                  <td>{{ item.c_comment }}</td>
+                  <td>{{ item.ps_partkey }}</td>
+                  <td>{{ item.ps_suppkey }}</td>
+                  <td>{{ item.ps_availqty }}</td>
+                  <td>{{ item.ps_supplycost }}</td>
+                  <td>{{ item.ps_comment}}</td>
+                {%comment%}
+                    <td>   联合主键如何设置id
+                  <a href="{% url 'DBHW:partsuppedit' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:partsuppdelete' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:partsuppadd' %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:partsuppview' item.r_regionkey%}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
+                    {% endcomment %}
                 </tr>
+
               {% endfor %}
 
 

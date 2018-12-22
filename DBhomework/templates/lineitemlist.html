@@ -82,32 +82,61 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">顾客</h1>
+          <h1 class="page-header">在线商品明细</h1>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>顾客编号</th>
-                  <th>顾客名称</th>
-                  <th>顾客地址</th>
-                  <th>所属国家</th>
-                  <th>联系电话</th>
-                  <th>可用余额</th>
-                  <th>市场</th>
-                  <th>备注</th>
+                  <th>订单编号</th>
+                  <th>零件编号</th>
+                  <th>供应商编号</th>
+                  <th>明细编号</th>
+                  <th>数量</th>
+                  <th>总金额</th>
+                  <th>折扣</th>
+                  <th>税</th>
+                    <th>是否退货</th>
+                    <th>明细状态</th>
+                    <th>运输时间</th>
+                    <th>交付时间</th>
+                    <th>收货时间</th>
+                    <th>运输单位</th>
+                    <th>运送方式</th>
+                    <th>备注</th>
+
                 </tr>
               </thead>
               <tbody>
-              {% for item in customer_list %}
+              {% for item in lineitem_list %}
                 <tr>
-                  <td>{{ item.c_custkey }}</td>
-                  <td>{{ item.c_name }}</td>
-                  <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
-                  <td>{{ item.c_phone}}</td>
-                  <td>{{ item.c_acctbal }}</td>
-                  <td>{{ item.c_mktsegment }}</td>
-                  <td>{{ item.c_comment }}</td>
+                  <td>{{ item.l_orderkey }}</td>
+                  <td>{{ item.l_partkey }}</td>
+                  <td>{{ item.l_suppkey }}</td>
+                  <td>{{ item.l_linenumber }}</td>
+                  <td>{{ item.l_quantity}}</td>
+                  <td>{{ item.l_extendedprice }}</td>
+                  <td>{{ item.l_discount }}</td>
+                  <td>{{ item.l_tax }}</td>
+                <td>{{ item.l_returnflag }}</td>
+                <td>{{ item.l_linestatus }}</td>
+                <td>{{ item.l_shipdate }}</td>
+                <td>{{ item.l_commitdate }}</td>
+                <td>{{ item.l_receiptdate }}</td>
+                <td>{{ item.l_shipinstruct }}</td>
+                <td>{{ item.l_shipmode }}</td>
+                <td>{{ item.l_comment }}</td>
+                {%comment%}
+                    <td>   联合主键如何设置id
+                  <a href="{% url 'DBHW:lineitemedit' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:lineitemdelete' item.r_regionkey  %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:lineitemadd' %}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:lineitemview' item.r_regionkey%}" id="{{ item.r_regionkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
+                    {% endcomment %}
                 </tr>
               {% endfor %}
 

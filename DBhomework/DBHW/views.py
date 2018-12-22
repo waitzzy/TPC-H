@@ -9,6 +9,10 @@ def Customer_list(request):
     customer_list = models.Customer.objects.all()
     return render(request, 'customerlist.html', {"customer_list":customer_list})
 
+def Region_list(request):
+    region_list = models.Region.objects.all()
+    return render(request, 'regionlist.html',{"region_list":region_list})
+
 def Nation_list(request):
     nation_list = models.Nation.objects.all()
     return render(request, 'nationlist.html', {"nation_list":nation_list})

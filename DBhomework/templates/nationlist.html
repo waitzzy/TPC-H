@@ -99,7 +99,8 @@
                   <td>{{ item.n_nationkey }}</td>
                   <td>{{ item.n_name }}</td>
                   <td>{{ item.n_regionkey }}</td>
-                  <td>{{ item.n_comment }}
+                    <td>{{ item.n_comment }}</td>
+                    <td>
                   <a href="{% url 'DBHW:nationedit' item.n_nationkey  %}" id="{{ item.n_nationkey }}">
                   <button class="btn btn-success">编辑</button></a>
                    <a href="{% url 'DBHW:nationdelete' item.n_nationkey  %}" id="{{ item.n_nationkey }}">

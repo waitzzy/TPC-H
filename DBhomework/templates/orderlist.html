@@ -82,32 +82,44 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">顾客</h1>
+          <h1 class="page-header">订单</h1>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
+                  <th>订单编号</th>
                   <th>顾客编号</th>
-                  <th>顾客名称</th>
-                  <th>顾客地址</th>
-                  <th>所属国家</th>
-                  <th>联系电话</th>
-                  <th>可用余额</th>
-                  <th>市场</th>
+                  <th>订单状态</th>
+                  <th>订单金额</th>
+                  <th>订单日期</th>
+                    <th>优先级</th>
+                  <th>制单员</th>
+                  <th>运输优先级</th>
                   <th>备注</th>
                 </tr>
               </thead>
               <tbody>
-              {% for item in customer_list %}
+              {% for item in order_list %}
                 <tr>
-                  <td>{{ item.c_custkey }}</td>
-                  <td>{{ item.c_name }}</td>
-                  <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
-                  <td>{{ item.c_phone}}</td>
-                  <td>{{ item.c_acctbal }}</td>
-                  <td>{{ item.c_mktsegment }}</td>
-                  <td>{{ item.c_comment }}</td>
+                  <td>{{ item.o_orderkey }}</td>
+                  <td>{{ item.o_custkey }}</td>
+                  <td>{{ item.o_orderstatus }}</td>
+                  <td>{{ item.o_totalprice }}</td>
+                  <td>{{ item.o_orderdate}}</td>
+                  <td>{{ item.o_orderpriority }}</td>
+                  <td>{{ item.o_clerk }}</td>
+                  <td>{{ item.o_shippriority }}</td>
+                 <td>{{ item.o_comment }}</td>
+                    <td>
+                  <a href="{% url 'DBHW:orderedit' item.o_orderkey %}" id="{{ item.o_orderkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:orderdelete' item.o_orderkey  %}" id="{{ item.o_orderkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:orderadd' %}" id="{{ item.o_orderkey}}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:orderview' item.o_orderkey%}" id="{{ item.o_orderkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
                 </tr>
               {% endfor %}
 

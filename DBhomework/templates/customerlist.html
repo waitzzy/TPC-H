@@ -43,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">TPC-H</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -108,6 +108,16 @@
                   <td>{{ item.c_acctbal }}</td>
                   <td>{{ item.c_mktsegment }}</td>
                   <td>{{ item.c_comment }}</td>
+                <td>
+                  <a href="{% url 'DBHW:customeredit' item.c_custkey  %}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">编辑</button></a>
+                   <a href="{% url 'DBHW:customerdelete' item.c_custkey  %}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">删除</button></a>
+                   <a href="{% url 'DBHW:customeradd' %}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">增加</button></a>
+                   <a href="{% url 'DBHW:customerview' item.c_custkey%}" id="{{ item.c_custkey }}">
+                  <button class="btn btn-success">浏览</button></a>
+                  </td>
                 </tr>
               {% endfor %}
 

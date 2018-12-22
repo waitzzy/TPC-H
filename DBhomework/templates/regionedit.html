@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑地区</title>
+</head>
+<body>
+
+        <form action="/DBHW/regionedit-{{ obj.r_regionkey }}/" method="post">{% csrf_token %}
+        地区编号:<input type="text" name="r_regionkey" value="{{ obj.r_regionkey }}"/>
+        地区名称：<input type="text" name="r_name" value="{{ obj.r_name }}"/>
+        备注：<input type="text" name="r_comment" value="{{ obj.r_comment }}"/>
+            供应商：<input type="text" name="ps_supplycost" value="{{ obj.ps_supplycost }}"/>
+备注：<input type="text" name="ps_comment" value="{{ obj.ps_comment }}"/>
+        <input type="submit" value="编辑">
+        </form>
+</body>
+</html>
