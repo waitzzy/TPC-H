@@ -79,9 +79,46 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">地区</h1>
+                 <form class="form-horizontal" action="/DBHW/regionadd/" method="post">{% csrf_token %}
+                       <div class="form-group">
+                           <label class="col-sm-2 control-label">地区编号</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="r_regionkey" />
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">地区名称</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="r_name" />
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">备注</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="r_comment" />
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">供应价格</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="ps_supplycost" />
+                           </div>
+                       </div>
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">备注</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="ps_comment" />
+                           </div>
+                       </div>
+                     <div class="col-sm-5" style="text-align:center">
+                     <button type="submit" class="btn btn-success">增加</button>
+                     </div>
+
+        </form>
         </div>
       </div>
     </div>

@@ -33,7 +33,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -43,18 +42,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">TPC-H</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="../customerlist">顾客</a></li>
+            <li><a href="../partlist">零件</a></li>
+            <li><a href="../orderlist">订单</a></li>
+            <li><a href="../supplierlist">供应商</a></li>
+            <li><a href="../lineitemlist">订单明细</a></li>
+            <li><a href="../partsupplist">零件供应</a></li>
+             <li><a href="../nationlist">国家</a></li>
+            <li><a href="../regionlist">地区</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
+          <form class="navbar-form navbar-right" method="get" action="{% url 'DBHW:customersearch' %}">
+            <input type="text" class="form-control"  name="name" placeholder="Search...">
           </form>
+
         </div>
       </div>
     </nav>
@@ -63,23 +67,17 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li class="active"><a href="#">表单： <span class="sr-only">(current)</span></a></li>
+            <li><a href="{% url 'DBHW:customerlist'  %}">顾客</a></li>
+            <li><a href="{% url 'DBHW:partlist'  %}">零件</a></li>
+            <li><a href="{% url 'DBHW:supplierlist'  %}">供应商</a></li>
+            <li><a href="{% url 'DBHW:partsupplist'  %}">零件供应</a></li>
+            <li><a href="{% url 'DBHW:orderlist'  %}">订单</a></li>
+            <li><a href="{% url 'DBHW:nationlist'  %}">国家</a></li>
+            <li><a href="{% url 'DBHW:regionlist'  %}">地区</a></li>
+            <li><a href="{% url 'DBHW:lineitemlist'  %}">订单明细</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
+
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">顾客</h1>
@@ -105,26 +103,52 @@
                   <td>{{ item.c_custkey }}</td>
                   <td>{{ item.c_name }}</td>
                   <td>{{ item.c_address }}</td>
-                  <td>{{ item.c_nationkey }}</td>
+                  <td>{{ item.c_nationkey.n_name }}</td>
                   <td>{{ item.c_phone}}</td>
                   <td>{{ item.c_acctbal }}</td>
                   <td>{{ item.c_mktsegment }}</td>
                   <td>{{ item.c_comment }}</td>
+
+                <td>
+
                   <a href="{% url 'DBHW:customeredit' item.c_custkey  %}" id="{{ item.c_custkey }}">
                   <button class="btn btn-success">编辑</button></a>
                    <a href="{% url 'DBHW:customerdelete' item.c_custkey  %}" id="{{ item.c_custkey }}">
                   <button class="btn btn-success">删除</button></a>
+
                    <a href="{% url 'DBHW:customerview' item.c_custkey%}" id="{{ item.c_custkey }}">
                   <button class="btn btn-success">浏览</button></a>
                   </td>
                 </tr>
               {% endfor %}
-
-
               </tbody>
             </table>
           </div>
         </div>
+
+      <ul class="pager">
+        <li>
+        {% if customer_list.has_previous %}
+            <a href="?page={{ customer_list.previous_page_number }}">上一页</a>
+        {% else %}
+            <a> 第一页 </a>
+        {% endif %}
+        </li>
+
+        <span class="text-primary">
+             第{{ customer_list.number }}页   共{{ customer_list.paginator.num_pages }}页
+        </span>
+
+        <li>
+        {% if customer_list.has_next %}
+            <a href="?page={{ customer_list.next_page_number }}">下一页</a>
+        {% else %}
+            <a> 最后一页 </a>
+        {% endif %}
+
+        </li>
+      </ul>
+
       </div>
     </div>
 

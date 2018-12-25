@@ -13,14 +13,14 @@ class Customer(models.Model):
     c_comment = models.CharField(db_column='C_COMMENT', max_length=17, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'customer'
 
 
 class Lineitem(models.Model):
-    l_orderkey = models.IntegerField(db_column='L_ORDERKEY', primary_key=True)  # Field name made lowercase.
-    l_partkey = models.ForeignKey('Partsupp', models.DO_NOTHING,related_name='l_partkey_Lineitem' ,db_column='L_PARTKEY', blank=True, null=True)  # Field name made lowercase.
-    l_suppkey = models.ForeignKey('Partsupp', models.DO_NOTHING,related_name='l_suppkey_Lineitem', db_column='L_SUPPKEY', blank=True, null=True)  # Field name made lowercase.
+    l_orderkey = models.IntegerField(db_column='L_ORDERKEY')  # Field name made lowercase.
+    l_partkey = models.ForeignKey('Part', models.DO_NOTHING,related_name='l_partkey_Lineitem', blank=True, null=True)  # Field name made lowercase.
+    l_suppkey = models.ForeignKey('Supplier', models.DO_NOTHING,related_name='l_suppkey_Lineitem', blank=True, null=True)  # Field name made lowercase.
     l_linenumber = models.IntegerField(db_column='L_LINENUMBER')  # Field name made lowercase.
     l_quantity = models.FloatField(db_column='L_QUANTITY', blank=True, null=True)  # Field name made lowercase.
     l_extendedprice = models.FloatField(db_column='L_EXTENDEDPRICE', blank=True, null=True)  # Field name made lowercase.
@@ -36,9 +36,9 @@ class Lineitem(models.Model):
     l_comment = models.CharField(db_column='L_COMMENT', max_length=44, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'lineitem'
-        unique_together = (('l_orderkey', 'l_linenumber'),)
+        unique_together = ('l_orderkey', 'l_linenumber')
 
 
 class Nation(models.Model):
@@ -48,7 +48,7 @@ class Nation(models.Model):
     n_comment = models.CharField(db_column='N_COMMENT', max_length=152, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'nation'
 
 
@@ -64,7 +64,7 @@ class Orders(models.Model):
     o_comment = models.CharField(db_column='O_COMMENT', max_length=79, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'orders'
 
 
@@ -80,21 +80,20 @@ class Part(models.Model):
     p_comment = models.CharField(db_column='P_COMMENT', max_length=23, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'part'
 
 
 class Partsupp(models.Model):
-    ps_partkey = models.ForeignKey(Part, models.DO_NOTHING, related_name='l_partkey_ps_partkey',db_column='PS_PARTKEY', primary_key=True)  # Field name made lowercase.
-    ps_suppkey = models.ForeignKey('Supplier', models.DO_NOTHING, db_column='PS_SUPPKEY')  # Field name made lowercase.
+    ps_partkey = models.ForeignKey('Part', models.DO_NOTHING, related_name='ps_partkey_Partsupp',db_column='PS_PARTKEY')  # Field name made lowercase.
+    ps_suppkey = models.ForeignKey('Supplier', models.DO_NOTHING,related_name='ps_suppkey_Partsupp', db_column='PS_SUPPKEY')  # Field name made lowercase.
     ps_availqty = models.IntegerField(db_column='PS_AVAILQTY', blank=True, null=True)  # Field name made lowercase.
     ps_supplycost = models.FloatField(db_column='PS_SUPPLYCOST', blank=True, null=True)  # Field name made lowercase.
     ps_comment = models.CharField(db_column='PS_COMMENT', max_length=199, blank=True, null=True)  # Field name made lowercase.
-
     class Meta:
-        managed = False
+        managed = True
         db_table = 'partsupp'
-        unique_together = (('ps_partkey', 'ps_suppkey'),)
+        unique_together = ('ps_partkey', 'ps_suppkey')
 
 
 class Region(models.Model):
@@ -104,8 +103,9 @@ class Region(models.Model):
     ps_supplycost = models.FloatField(db_column='PS_SUPPLYCOST', blank=True, null=True)  # Field name made lowercase.
     ps_comment = models.CharField(db_column='PS_COMMENT', max_length=199, blank=True, null=True)  # Field name made lowercase.
 
+
     class Meta:
-        managed = False
+        managed = True
         db_table = 'region'
 
 
@@ -113,11 +113,11 @@ class Supplier(models.Model):
     s_suppkey = models.IntegerField(db_column='S_SUPPKEY', primary_key=True)  # Field name made lowercase.
     s_name = models.CharField(db_column='S_NAME', max_length=25, blank=True, null=True)  # Field name made lowercase.
     s_address = models.CharField(db_column='S_ADDRESS', max_length=40, blank=True, null=True)  # Field name made lowercase.
-    s_nationkey = models.ForeignKey(Nation, models.DO_NOTHING, db_column='S_NATIONKEY', blank=True, null=True)  # Field name made lowercase.
+    s_nationkey = models.ForeignKey('Nation', models.DO_NOTHING, db_column='S_NATIONKEY', blank=True, null=True)  # Field name made lowercase.
     s_phone = models.CharField(db_column='S_PHONE', max_length=15, blank=True, null=True)  # Field name made lowercase.
     s_acctbal = models.FloatField(db_column='S_ACCTBAL', blank=True, null=True)  # Field name made lowercase.
     s_comment = models.CharField(db_column='S_COMMENT', max_length=101, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'supplier'

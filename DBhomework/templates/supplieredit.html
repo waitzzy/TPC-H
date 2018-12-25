@@ -79,9 +79,60 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">供应商</h1>
+            <form class="form-horizontal" action="/DBHW/supplieredit-{{ obj.s_suppkey }}/" method="post">{% csrf_token %}
+                       <div class="form-group">
+                           <label class="col-sm-2 control-label">供应商编号</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_suppkey" value="{{ obj.s_suppkey }}"/>
+                           </div>
+                       </div>
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">供应商名称</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_name"  value="{{ obj.s_name }}"/>
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">供应商地址</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_address" value="{{ obj.s_address }}"/>
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">所属国家</label>
+                             <div class="col-sm-10">
+                               <select class="form-control" name="s_nationkey">
+                                    {% for item in nation_list %}
+                                        <option value = "{{ item.0 }}">{{ item.1 }}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+                       </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">联系方式</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_phone" value="{{ obj.s_phone }}"/>
+                           </div>
+                       </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">账户余额</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_acctbal" value="{{ obj.s_acctbal }}"/>
+                           </div>
+                       </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">备注</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="s_comment" value="{{ obj.s_comment }}"/>
+                           </div>
+                       </div>
+                <div class="col-sm-5" style="text-align:center">
+                     <button type="submit" class="btn btn-success">编辑</button>
+                </div>
+        </form>
         </div>
       </div>
     </div>

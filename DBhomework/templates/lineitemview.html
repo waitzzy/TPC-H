@@ -76,12 +76,32 @@
             <li><a href="../partsupplist">零件供应</a></li>
              <li><a href="../nationlist">国家</a></li>
             <li><a href="../regionlist">地区</a></li>
+
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">订单明细</h1>
+            <table  class="table table-hover table-bordered" style="color: #000000">
+                <tr><td>订单号</td><td>{{ obj.l_orderkey }}</td></tr>
+                <tr><td>零件编号</td><td>{{ obj.l_partkey.p_name }}</td></tr>
+                <tr><td>供应商编号</td><td>{{ obj.l_suppkey.s_name }}</td></tr>
+                <tr><td>明细编号</td><td>{{ obj.l_linenumber }}</td></tr>
+                <tr><td>数量</td><td>{{ obj.l_quantity }}</td></tr>
+                <tr><td>总金额</td><td>{{ obj.l_extendedprice }}</td></tr>
+                <tr><td>折扣</td><td>{{ obj.l_discount }}</td></tr>
+                <tr><td>税</td><td>{{ obj.l_tax }}</td></tr>
+                <tr><td>是否退货</td><td>{{ obj.l_returnflag }}</td></tr>
+                <tr><td>明细状态</td><td>{{ obj.l_linestatus }}</td></tr>
+                <tr><td>运输日期</td><td>{{ obj.l_shipdate }}</td></tr>
+                <tr><td>交付日期</td><td>{{ obj.l_commitdate }}</td></tr>
+                <tr><td>收货日期</td><td>{{ obj.l_receiptdate }}</td></tr>
+                <tr><td>运输单位</td><td>{{ obj.l_shipinstruct }}</td></tr>
+                <tr><td>运送方式</td><td>{{ obj.l_shipmode }}</td></tr>
+                <tr><td>备注</td><td>{{ obj.l_comment }}</td></tr>
+            </table>
+            <div class="col-sm-5" style="text-align:center">
+                <a href="{% url 'DBHW:lineitemlist'%}"><button class="btn btn-success">返回</button></a>
+            </div>
         </div>
       </div>
     </div>
@@ -97,3 +117,4 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+

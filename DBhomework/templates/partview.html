@@ -79,9 +79,21 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">零件</h1>
+            <table  class="table table-hover table-bordered" style="color: #000000">
+                <tr><td>零件编号</td><td>{{ obj.p_partkey }}</td></tr>
+                <tr><td>零件名称</td><td>{{ obj.p_name }}</td></tr>
+                <tr><td>零件市场</td><td>{{ obj.p_mfgr }}</td></tr>
+                <tr><td>品牌</td><td>{{ obj.p_brand }}</td></tr>
+                <tr><td>型号</td><td>{{ obj.p_type }}</td></tr>
+                <tr><td>尺寸</td><td>{{ obj.p_size }}</td></tr>
+                <tr><td>包装容器</td><td>{{ obj.p_container }}</td></tr>
+                <tr><td>零售价</td><td>{{ obj.p_retailprice }}</td></tr>
+                <tr><td>备注</td><td>{{ obj.p_comment }}</td></tr>
+            </table>
+            <div class="col-sm-5" style="text-align:center">
+                <a href="{% url 'DBHW:partlist'%}"><button class="btn btn-success">返回</button></a>
+            </div>
         </div>
       </div>
     </div>
@@ -97,3 +109,4 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+

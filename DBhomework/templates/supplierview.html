@@ -79,9 +79,19 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">供应商</h1>
+            <table  class="table table-hover table-bordered" style="color: #000000">
+                <tr><td>供应商编号</td><td>{{ obj.s_suppkey }}</td></tr>
+                <tr><td>供应商名称</td><td>{{ obj.s_name }}</td></tr>
+                <tr><td>供应商地址</td><td>{{ obj.s_address }}</td></tr>
+                <tr><td>所属国家</td><td>{{ obj.s_nationkey.n_name }}</td></tr>
+                <tr><td>联系方式</td><td>{{ obj.s_phone }}</td></tr>
+                <tr><td>账户余额</td><td>{{ obj.s_acctbal }}</td></tr>
+                <tr><td>备注</td><td>{{ obj.s_comment }}</td></tr>
+            </table>
+            <div class="col-sm-5" style="text-align:center">
+                <a href="{% url 'DBHW:supplierlist'%}"><button class="btn btn-success">返回</button></a>
+            </div>
         </div>
       </div>
     </div>
@@ -97,3 +107,4 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+

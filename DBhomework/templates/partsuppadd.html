@@ -79,9 +79,49 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">零件供应</h1>
+                 <form class="form-horizontal" action="/DBHW/partsuppadd/" method="post">{% csrf_token %}
+                       <div class="form-group">
+                           <label class="col-sm-2 control-label">零件编号</label>
+                           <div class="col-sm-10">
+                                 <select class="form-control" name="ps_partkey">
+                                    {% for item in part_list %}
+                                        <option value = "{{ item.0 }}">{{ item.1 }}</option>
+                                        {% endfor %}
+                                </select>
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">供应商</label>
+                           <div class="col-sm-10">
+                                 <select class="form-control" name="ps_suppkey">
+                                    {% for item in supplier_list %}
+                                        <option value = "{{ item.0 }}">{{ item.1 }}</option>
+                                        {% endfor %}
+                                </select>
+                           </div>
+                       </div>
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">供应数量</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="ps_availqty" />
+                           </div>
+                       </div>
+
+
+
+                     <div class="form-group">
+                           <label class="col-sm-2 control-label">备注</label>
+                           <div class="col-sm-10">
+                                <input class="form-control" type="text" name="ps_comment" />
+                           </div>
+                       </div>
+                     <div class="col-sm-5" style="text-align:center">
+                     <button type="submit" class="btn btn-success">增加</button>
+                     </div>
+        </form>
         </div>
       </div>
     </div>
@@ -97,3 +137,6 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
+
+
+

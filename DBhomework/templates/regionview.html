@@ -79,9 +79,17 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">国家</h1>
-        <td>成功删除</td>
-        <a href="{% url 'DBHW:nationlist'%}"><button class="btn btn-success">返回</button></a>
+          <h1 class="page-header">地区</h1>
+            <table  class="table table-hover table-bordered" style="color: #000000">
+                <tr><td>地区编号</td><td>{{ obj.r_regionkey }}</td></tr>
+                <tr><td>地区名称</td><td>{{ obj.r_name }}</td></tr>
+                <tr><td>备注</td><td>{{ obj.r_comment }}</td></tr>
+                <tr><td>地区编号</td><td>{{ obj.ps_supplycost }}</td></tr>
+                <tr><td>备注</td><td>{{ obj.ps_comment }}</td></tr>
+            </table>
+            <div class="col-sm-5" style="text-align:center">
+                <a href="{% url 'DBHW:regionlist'%}"><button class="btn btn-success">返回</button></a>
+            </div>
         </div>
       </div>
     </div>
